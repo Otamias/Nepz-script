@@ -1,0 +1,26 @@
+local player = game.Players.LocalPlayer
+local nearestNPC = nil
+local closestDistance = math.huge
+
+for _, npc in pairs(game.Workspace:GetChildren()) do
+    if npc:FindFirstChild("HumanoidRootPart") and npc:FindFirstChild("Humanoid") then
+        local distance = (npc.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
+        if distance < closestDistance then
+            nearestNPC = npc
+            closestDistance = distance
+        end
+    end
+end
+
+if nearestNPC then
+    local npcPosition = nearestNPC.HumanoidRootPart.Position
+    player.Character:SetPrimaryPartCFrame(CFrame.new(npcPosition + Vector3.new(5, 0, 5)))
+
+    local humanoid = nearestNPC:FindFirstChild("Humanoid")
+    if humanoid then
+        while autoFarmOn and humanoid.Health > 0 do
+            humanoid:TakeDamage(500)
+            wait(0.0333)
+        end
+    end
+end
