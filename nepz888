@@ -1,0 +1,3 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Otamias/Nepz-script/main/Nepz-script%20bloxfruits"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Otamias/Nepz-script/main/nepz-script%20bloxfruit"))()
